@@ -1,6 +1,6 @@
-h1. Morphology Analysis Plugin for ElasticSearch
+h1. Morphological Analysis Plugin for ElasticSearch
 
-The Morphology Analysis plugin integrates Russian and English <a href="http://code.google.com/p/russianmorphology/">morphology analysis module</a> into elasticsearch. This plugin adds two new analyzers: "russian_morphology" and "english_morphology" and two token filters with the same names.
+The Morphological Analysis plugin integrates <a href="http://code.google.com/p/russianmorphology/">Russian and English morphology for java and lucene 3.0 framework</a> into elasticsearch. This plugin adds two new analyzers: "russian_morphology" and "english_morphology" and two token filters with the same names.
 
 The <a href="https://github.com/imotov/elasticsearch-analysis-morphology/blob/master/demo.sh">demo.sh</a> file shows a few examples of the analyzers behavior.
 
@@ -8,8 +8,9 @@ h2. Compatibility
 
 The following table shows the versions of elasticsearch and jetty that Jetty Plugin was built with. 
 
-|_. Morphology Analysis Plugin |_.  Elasticsearch    |
-| master        | 0.19 -> master   |
+|_. Morphological Analysis Plugin |_.  Russian and English morphology   |_.  Elasticsearch    |
+| master        | 1.1-SNAPSHOT   | 0.19 -> master   |
+| 1.0.0-SNAPSHOT      | 1.1-SNAPSHOT   | 0.19 -> master   |
 
 
 h2. Installation
