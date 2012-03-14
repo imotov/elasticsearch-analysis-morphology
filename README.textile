@@ -1,0 +1,22 @@
+h1. Morphology Analysis Plugin for ElasticSearch
+
+The Morphology Analysis plugin integrates Russian and English <a href="http://code.google.com/p/russianmorphology/">morphology analysis module</a> into elasticsearch.
+
+h2. Compatibility
+
+The following table shows the versions of elasticsearch and jetty that Jetty Plugin was built with. 
+
+|_. Morphology Analysis Plugin |_.  Elasticsearch    |
+| master        | 0.19 -> master   |
+
+
+h2. Installation and configuration
+
+In order to install the plugin, simply run the following command in the elasticsearch home directory: 
+<pre>
+bin/plugin -install imotov/elasticsearch-analysis-morphology/1.0.0-SNAPSHOT
+</pre>
+
+
+
+The <a href="https://github.com/imotov/elasticsearch-analysis-morphology/blob/master/demo.sh">demo.sh</a> file shows some examples of the analyzer behavior.
