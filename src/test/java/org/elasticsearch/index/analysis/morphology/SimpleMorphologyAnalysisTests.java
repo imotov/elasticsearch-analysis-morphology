@@ -16,10 +16,18 @@
 
 package org.elasticsearch.index.analysis.morphology;
 
+import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+import org.apache.lucene.morphology.LuceneMorphology;
+import org.apache.lucene.morphology.analyzer.MorphologyAnalyzer;
+import org.apache.lucene.morphology.analyzer.MorphologyFilter;
 import org.apache.lucene.morphology.english.EnglishAnalyzer;
+import org.apache.lucene.morphology.english.EnglishLuceneMorphology;
 import org.apache.lucene.morphology.russian.RussianAnalyzer;
+import org.apache.lucene.morphology.russian.RussianLuceneMorphology;
 import org.elasticsearch.common.inject.Injector;
 import org.elasticsearch.common.inject.ModulesBuilder;
+import org.elasticsearch.common.io.FastStringReader;
 import org.elasticsearch.common.settings.SettingsModule;
 import org.elasticsearch.env.Environment;
 import org.elasticsearch.env.EnvironmentModule;
@@ -32,7 +40,11 @@ import org.elasticsearch.index.settings.IndexSettingsModule;
 import org.elasticsearch.indices.analysis.IndicesAnalysisModule;
 import org.elasticsearch.indices.analysis.IndicesAnalysisService;
 import org.hamcrest.MatcherAssert;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.io.StringReader;
 
 import static org.elasticsearch.common.settings.ImmutableSettings.Builder.EMPTY_SETTINGS;
 import static org.hamcrest.Matchers.instanceOf;
@@ -42,8 +54,7 @@ import static org.hamcrest.Matchers.instanceOf;
  */
 public class SimpleMorphologyAnalysisTests {
 
-    @Test
-    public void testMorphologyAnalysis() throws Exception {
+    private AnalysisService getAnalysisService() {
         Index index = new Index("test");
 
         Injector parentInjector = new ModulesBuilder().add(new SettingsModule(EMPTY_SETTINGS),
@@ -55,13 +66,48 @@ public class SimpleMorphologyAnalysisTests {
                         .addProcessor(new MorphologyAnalysisBinderProcessor()))
                 .createChildInjector(parentInjector);
 
-        AnalysisService analysisService = injector.getInstance(AnalysisService.class);
+        return injector.getInstance(AnalysisService.class);
+
+    }
+
+    public static void assertSimpleTSOutput(TokenStream stream, String[] expected) throws IOException {
+        stream.reset();
+        CharTermAttribute termAttr = stream.getAttribute(CharTermAttribute.class);
+        Assert.assertNotNull(termAttr);
+        int i = 0;
+        while (stream.incrementToken()) {
+            Assert.assertTrue(i < expected.length, "got extra term: " + termAttr.toString());
+            Assert.assertEquals(termAttr.toString(), expected[i], "expected different term at index " + i);
+            i++;
+        }
+        Assert.assertEquals(i, expected.length, "not all tokens produced");
+    }
+
+    @Test
+    public void testMorphologyAnalysis() throws Exception {
+        AnalysisService analysisService = getAnalysisService();
 
         NamedAnalyzer russianAnalyzer = analysisService.analyzer("russian_morphology");
         MatcherAssert.assertThat(russianAnalyzer.analyzer(), instanceOf(RussianAnalyzer.class));
+        assertSimpleTSOutput(russianAnalyzer.tokenStream("test", new StringReader("тест")), new String[] {"тест", "тесто"});
 
         NamedAnalyzer englishAnalyzer = analysisService.analyzer("english_morphology");
         MatcherAssert.assertThat(englishAnalyzer.analyzer(), instanceOf(EnglishAnalyzer.class));
+        assertSimpleTSOutput(englishAnalyzer.tokenStream("test", new StringReader("gone")), new String[]{"gone", "go"});
+    }
+
+    @Test
+    public void testPm() throws Exception {
+        LuceneMorphology russianLuceneMorphology = new RussianLuceneMorphology();
+        LuceneMorphology englishLuceneMorphology = new EnglishLuceneMorphology();
+
+        MorphologyAnalyzer russianAnalyzer = new MorphologyAnalyzer(russianLuceneMorphology);
+        TokenStream stream = russianAnalyzer.reusableTokenStream("name", new FastStringReader("тест пм тест"));
+        MorphologyFilter englishFilter = new MorphologyFilter(stream, englishLuceneMorphology);
+
+        while (englishFilter.incrementToken()) {
+            System.out.println(englishFilter.toString());
+        }
     }
 
 }
