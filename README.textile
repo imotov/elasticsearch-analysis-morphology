@@ -16,10 +16,15 @@ h2. Installation
 
 In order to install the plugin, simply run the following command in the elasticsearch home directory: 
 
-@bin/plugin -url http://dl.bintray.com/content/imotov/elasticsearch-plugins/elasticsearch-analysis-morphology-VERSION.zip -install analysis-morphology@
+<pre>
+bin/plugin -url http://dl.bintray.com/content/imotov/elasticsearch-plugins/elasticsearch-analysis-morphology-VERSION.zip -install analysis-morphology
+</pre>
 
 where @VERSION@ is the version of the plugin from the compatibility table. For examples to install version @1.0.0@ run 
 
-@bin/plugin -url http://dl.bintray.com/content/imotov/elasticsearch-plugins/elasticsearch-analysis-morphology-1.0.0.zip -install analysis-morphology@
+<pre>
+bin/plugin -url http://dl.bintray.com/content/imotov/elasticsearch-plugins/elasticsearch-analysis-morphology-1.0.0.zip -install analysis-morphology
+</pre>
+
 
 
