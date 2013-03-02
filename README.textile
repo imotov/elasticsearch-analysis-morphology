@@ -8,16 +8,16 @@ h2. Compatibility
 
 The following table shows the versions of elasticsearch and jetty that Jetty Plugin was built with. 
 
-|_. Morphological Analysis Plugin |_.  Russian and English morphology   |_.  Elasticsearch    |
-| master        | 1.1-SNAPSHOT   | 0.19 -> master   |
-| 1.0.0-SNAPSHOT      | 1.1-SNAPSHOT   | 0.19 -> master   |
+|_. Morphological Analysis Plugin |_.  Elasticsearch   |
+| 1.0.0                           | 0.19.0 -> 0.19.9   |
 
 
 h2. Installation
 
 In order to install the plugin, simply run the following command in the elasticsearch home directory: 
 
-<pre>
-bin/plugin -install imotov/elasticsearch-analysis-morphology/1.0.0-SNAPSHOT
-</pre>
+@bin/plugin -url http://dl.bintray.com/content/imotov/elasticsearch-plugins/elasticsearch-analysis-morphology-VERSION.zip -install analysis-morphology@
+
+where @VERSION@ is the version of the plugin from the compatibility table.
+
 
