@@ -1,0 +1,3 @@
+cluster.name: analyzer-test
+network.host: 127.0.0.1
+discovery.zen.ping.multicast.enabled: false
