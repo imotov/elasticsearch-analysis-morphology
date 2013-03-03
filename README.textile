@@ -9,6 +9,7 @@ h2. Compatibility
 The following table shows the versions of elasticsearch and jetty that Jetty Plugin was built with. 
 
 |_. Morphological Analysis Plugin |_.  Elasticsearch   |
+| 1.1.0                           | 0.90.0.Beta1 -> master   |
 | 1.0.0                           | 0.19.0 -> 0.20.99   |
 
 
