@@ -102,7 +102,8 @@ public class SimpleMorphologyAnalysisTests {
         LuceneMorphology englishLuceneMorphology = new EnglishLuceneMorphology();
 
         MorphologyAnalyzer russianAnalyzer = new MorphologyAnalyzer(russianLuceneMorphology);
-        TokenStream stream = russianAnalyzer.reusableTokenStream("name", new FastStringReader("тест пм тест"));
+        TokenStream stream = russianAnalyzer.tokenStream("name", new FastStringReader("тест пм тест"));
+        stream.reset();
         MorphologyFilter englishFilter = new MorphologyFilter(stream, englishLuceneMorphology);
 
         while (englishFilter.incrementToken()) {

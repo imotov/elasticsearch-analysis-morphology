@@ -31,7 +31,8 @@
     </parent>
 
     <properties>
-        <elasticsearch.version>0.19.12</elasticsearch.version>
+        <elasticsearch.version>0.90.0.Beta1</elasticsearch.version>
+        <russian.morphology.version>1.2-SNAPSHOT</russian.morphology.version>
     </properties>
 
     <repositories>
@@ -53,14 +54,14 @@
         <dependency>
             <groupId>org.apache.lucene.morphology</groupId>
             <artifactId>russian</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>${russian.morphology.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.lucene.morphology</groupId>
             <artifactId>english</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>${russian.morphology.version}</version>
             <scope>compile</scope>
         </dependency>
 
