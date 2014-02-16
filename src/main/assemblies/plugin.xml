@@ -19,8 +19,8 @@
             <useProjectArtifact>true</useProjectArtifact>
             <useTransitiveFiltering>true</useTransitiveFiltering>
             <includes>
-                <include>org.apache.lucene.morphology:russian</include>
-                <include>org.apache.lucene.morphology:english</include>
+                <include>org.motovs.lucene.morphology:russian</include>
+                <include>org.motovs.lucene.morphology:english</include>
             </includes>
         </dependencySet>
     </dependencySets>

@@ -1,33 +1,35 @@
 h1. Morphological Analysis Plugin for ElasticSearch
 
-The Morphological Analysis plugin integrates <a href="http://code.google.com/p/russianmorphology/">Russian and English morphology for java and lucene 3.0 framework</a> into elasticsearch. This plugin adds two new analyzers: "russian_morphology" and "english_morphology" and two token filters with the same names.
+The Morphological Analysis plugin integrates <a href="https://github.com/imotov/russianmorphology">Russian and English morphology for java and lucene framework</a> into elasticsearch. This plugin adds two new analyzers: "russian_morphology" and "english_morphology" and two token filters with the same names.
 
 The <a href="https://github.com/imotov/elasticsearch-analysis-morphology/blob/master/demo.sh">demo.sh</a> file shows a few examples of the analyzers behavior.
 
 h2. Compatibility
 
-The following table shows the versions of elasticsearch and jetty that Jetty Plugin was built with. 
+The following table shows the compatible versions of Wlasticsearch and Morphological Analysis Plugin.
 
-|_. Morphological Analysis Plugin |_.  Elasticsearch   |
-| 1.2.0                           | 1.0.0 -> 1.0.X  |
-| 1.1.0                           | 0.90.0.Beta1 -> 0.90.X   |
-| 1.0.0                           | 0.19.0 -> 0.20.99   |
-
+|_. Morphological Analysis Plugin |_.  Elasticsearch   |_. URL  |
+| 1.2.0                           | 1.0.0&nbsp;->&nbsp;master  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/1.2.0/elasticsearch-analysis-morphology-1.2.0.zip |
+| 1.1.0                           | 0.90.0.Beta1&nbsp;->&nbsp;0.90.X   | http://dl.bintray.com/content/imotov/elasticsearch-plugins/elasticsearch-analysis-morphology-1.1.0.zip |
+| 1.0.0                           | 0.19.0&nbsp;->&nbsp;0.20.99   | http://dl.bintray.com/content/imotov/elasticsearch-plugins/elasticsearch-analysis-morphology-1.0.0.zip |
 
 h2. Installation
 
 In order to install the plugin, simply run the following command in the elasticsearch home directory: 
 
 <pre>
-bin/plugin -install analysis-morphology -url http://dl.bintray.com/content/imotov/elasticsearch-plugins/elasticsearch-analysis-morphology-VERSION.zip 
+bin/plugin -install analysis-morphology -url URL
 </pre>
 
-where @VERSION@ is the version of the plugin from the compatibility table. For examples to install version @1.2.0@ run
+where @URL@ is the URL of the plugin from the compatibility table. For examples to install version @1.2.0@ run
 
 <pre>
-bin/plugin -install analysis-morphology -url http://dl.bintray.com/content/imotov/elasticsearch-plugins/elasticsearch-analysis-morphology-1.2.0.zip
+bin/plugin -install analysis-morphology -url http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/1.2.0/elasticsearch-analysis-morphology-1.2.0.zip
 </pre>
 
+h2. Upgrade to 1.2.0
+
+The way position increments are handled was changed in the version 1.2.0. Therefore, complete reindexing is highly recommended after upgrade to 1.2.0.
 
 
 
