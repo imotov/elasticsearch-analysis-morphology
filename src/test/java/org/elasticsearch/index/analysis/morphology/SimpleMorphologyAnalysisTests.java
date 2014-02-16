@@ -103,7 +103,6 @@ public class SimpleMorphologyAnalysisTests {
 
         MorphologyAnalyzer russianAnalyzer = new MorphologyAnalyzer(russianLuceneMorphology);
         TokenStream stream = russianAnalyzer.tokenStream("name", new FastStringReader("тест пм тест"));
-        stream.reset();
         MorphologyFilter englishFilter = new MorphologyFilter(stream, englishLuceneMorphology);
         assertSimpleTSOutput(englishFilter, new String[] {"тест", "тесто", "", "тест", "тесто"});
     }

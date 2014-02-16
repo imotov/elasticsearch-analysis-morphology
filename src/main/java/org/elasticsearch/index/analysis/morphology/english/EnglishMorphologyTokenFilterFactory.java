@@ -20,7 +20,7 @@ import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.morphology.LuceneMorphology;
 import org.apache.lucene.morphology.analyzer.MorphologyFilter;
 import org.apache.lucene.morphology.english.EnglishLuceneMorphology;
-import org.elasticsearch.ElasticSearchIllegalArgumentException;
+import org.elasticsearch.ElasticsearchIllegalArgumentException;
 import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.index.Index;
@@ -42,7 +42,7 @@ public class EnglishMorphologyTokenFilterFactory extends AbstractTokenFilterFact
         try {
             luceneMorph = new EnglishLuceneMorphology();
         } catch (IOException ex) {
-            throw new ElasticSearchIllegalArgumentException("Unable to load English morphology analyzer", ex);
+            throw new ElasticsearchIllegalArgumentException("Unable to load English morphology analyzer", ex);
         }
     }
 

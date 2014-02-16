@@ -18,7 +18,7 @@ package org.elasticsearch.index.analysis.morphology.english;
 
 import org.apache.lucene.morphology.analyzer.MorphologyAnalyzer;
 import org.apache.lucene.morphology.english.EnglishAnalyzer;
-import org.elasticsearch.ElasticSearchIllegalArgumentException;
+import org.elasticsearch.ElasticsearchIllegalArgumentException;
 import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.common.inject.assistedinject.Assisted;
 import org.elasticsearch.common.settings.Settings;
@@ -42,7 +42,7 @@ public class EnglishMorphologyAnalyzerProvider extends AbstractIndexAnalyzerProv
         try {
             analyzer = new EnglishAnalyzer();
         } catch (IOException ex) {
-            throw new ElasticSearchIllegalArgumentException("Unable to load English morphology analyzer", ex);
+            throw new ElasticsearchIllegalArgumentException("Unable to load English morphology analyzer", ex);
         }
     }
 

@@ -1,3 +1,4 @@
+#!/bin/sh
 curl -XDELETE 'http://localhost:9200/rustest' && echo
 curl -XPUT 'http://localhost:9200/rustest' -d '{
     "settings": {
@@ -26,7 +27,7 @@ curl -XPUT 'http://localhost:9200/rustest/type1/_mapping' -d '{
 	}
 }' && echo
 curl -XPUT 'http://localhost:9200/rustest/type2/_mapping' -d '{
-	"type1": {
+	"type2": {
     	"properties" : {
         	"body" : { "type" : "string", "analyzer" : "my_analyzer" }
     	}
