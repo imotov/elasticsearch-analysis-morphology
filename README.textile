@@ -6,7 +6,7 @@ The <a href="https://github.com/imotov/elasticsearch-analysis-morphology/blob/ma
 
 h2. Compatibility
 
-The following table shows the compatible versions of Wlasticsearch and Morphological Analysis Plugin.
+The following table shows the compatible versions of Elasticsearch and Morphological Analysis Plugin.
 
 |_. Morphological Analysis Plugin |_.  Elasticsearch   |_. URL  |
 | 1.2.0                           | 1.0.0&nbsp;->&nbsp;master  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/1.2.0/elasticsearch-analysis-morphology-1.2.0.zip |
