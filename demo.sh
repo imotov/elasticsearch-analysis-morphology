@@ -21,6 +21,7 @@ curl -XPUT 'http://localhost:9200/rustest' -d '{
 }' && echo
 curl -XPUT 'http://localhost:9200/rustest/type1/_mapping' -d '{
 	"type1": {
+	    "_all" : {"analyzer" : "russian_morphology"},
     	"properties" : {
         	"body" : { "type" : "string", "analyzer" : "russian_morphology" }
     	}
@@ -28,6 +29,7 @@ curl -XPUT 'http://localhost:9200/rustest/type1/_mapping' -d '{
 }' && echo
 curl -XPUT 'http://localhost:9200/rustest/type2/_mapping' -d '{
 	"type2": {
+        "_all" : {"analyzer" : "russian_morphology"},
     	"properties" : {
         	"body" : { "type" : "string", "analyzer" : "my_analyzer" }
     	}
@@ -65,3 +67,7 @@ echo "Should return 1"
 curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:go", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
 echo "Should return 2"
 curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:thinking", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
+echo "Searching _all field"
+curl -XPOST 'localhost:9200/rustest/_search?pretty' -d '{
+  "query": { "query_string": { "query": "Япония" }, "analyze_wildcard": true }
+}'
