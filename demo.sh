@@ -69,5 +69,10 @@ echo "Should return 2"
 curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:thinking", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
 echo "Searching _all field"
 curl -XPOST 'localhost:9200/rustest/_search?pretty' -d '{
-  "query": { "query_string": { "query": "Япония" }, "analyze_wildcard": true }
+  "query": { 
+      "query_string": { 
+          "query": "Япония",
+          "analyze_wildcard": true
+      } 
+  }
 }'
