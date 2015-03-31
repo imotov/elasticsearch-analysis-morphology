@@ -16,9 +16,14 @@
 
 package org.elasticsearch.plugin.analysis.morphology;
 
+import org.elasticsearch.common.collect.ImmutableList;
+import org.elasticsearch.common.inject.Module;
 import org.elasticsearch.index.analysis.AnalysisModule;
 import org.elasticsearch.index.analysis.morphology.MorphologyAnalysisBinderProcessor;
+import org.elasticsearch.indices.analysis.morphology.MorphologyIndicesAnalysisModule;
 import org.elasticsearch.plugins.AbstractPlugin;
+
+import java.util.Collection;
 
 /**
  *
@@ -33,6 +38,11 @@ public class AnalysisMorphologyPlugin extends AbstractPlugin {
     @Override
     public String description() {
         return "Morphology analysis support";
+    }
+
+    @Override
+    public Collection<Class<? extends Module>> modules() {
+        return ImmutableList.<Class<? extends Module>>of(MorphologyIndicesAnalysisModule.class);
     }
 
     public void onModule(AnalysisModule module) {
