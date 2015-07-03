@@ -16,7 +16,7 @@
 
 package org.elasticsearch.plugin.analysis.morphology;
 
-import org.elasticsearch.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList;
 import org.elasticsearch.common.inject.Module;
 import org.elasticsearch.index.analysis.AnalysisModule;
 import org.elasticsearch.index.analysis.morphology.MorphologyAnalysisBinderProcessor;

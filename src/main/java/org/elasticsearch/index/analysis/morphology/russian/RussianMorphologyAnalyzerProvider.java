@@ -18,7 +18,6 @@ package org.elasticsearch.index.analysis.morphology.russian;
 
 import org.apache.lucene.morphology.analyzer.MorphologyAnalyzer;
 import org.apache.lucene.morphology.russian.RussianAnalyzer;
-import org.elasticsearch.ElasticsearchIllegalArgumentException;
 import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.common.inject.assistedinject.Assisted;
 import org.elasticsearch.common.settings.Settings;
@@ -42,7 +41,7 @@ public class RussianMorphologyAnalyzerProvider extends AbstractIndexAnalyzerProv
         try {
             analyzer = new RussianAnalyzer();
         } catch (IOException ex) {
-            throw new ElasticsearchIllegalArgumentException("Unable to load Russian morphology analyzer", ex);
+            throw new IllegalArgumentException("Unable to load Russian morphology analyzer", ex);
         }
     }
 
