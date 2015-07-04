@@ -31,8 +31,8 @@
     </parent>
 
     <properties>
-        <elasticsearch.version>1.0.0</elasticsearch.version>
-        <russian.morphology.version>4.6.0</russian.morphology.version>
+        <elasticsearch.version>1.6.0</elasticsearch.version>
+        <russian.morphology.version>4.10.0</russian.morphology.version>
     </properties>
 
     <repositories>
@@ -157,6 +157,15 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration combine.self="override">
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <arguments></arguments> <!-- to override sonotype parent settings -->
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
             </plugin>
         </plugins>
     </build>

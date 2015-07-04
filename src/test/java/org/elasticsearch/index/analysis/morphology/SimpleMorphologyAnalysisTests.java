@@ -25,9 +25,13 @@ import org.apache.lucene.morphology.english.EnglishAnalyzer;
 import org.apache.lucene.morphology.english.EnglishLuceneMorphology;
 import org.apache.lucene.morphology.russian.RussianAnalyzer;
 import org.apache.lucene.morphology.russian.RussianLuceneMorphology;
+import org.elasticsearch.Version;
+import org.elasticsearch.cluster.metadata.IndexMetaData;
 import org.elasticsearch.common.inject.Injector;
 import org.elasticsearch.common.inject.ModulesBuilder;
 import org.elasticsearch.common.io.FastStringReader;
+import org.elasticsearch.common.settings.ImmutableSettings;
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.settings.SettingsModule;
 import org.elasticsearch.env.Environment;
 import org.elasticsearch.env.EnvironmentModule;
@@ -57,12 +61,17 @@ public class SimpleMorphologyAnalysisTests {
     private AnalysisService getAnalysisService() {
         Index index = new Index("test");
 
-        Injector parentInjector = new ModulesBuilder().add(new SettingsModule(EMPTY_SETTINGS),
-                new EnvironmentModule(new Environment(EMPTY_SETTINGS)), new IndicesAnalysisModule()).createInjector();
+        Settings settings = ImmutableSettings.settingsBuilder()
+                .put(IndexMetaData.SETTING_VERSION_CREATED, Version.CURRENT)
+                .build();
+
+
+        Injector parentInjector = new ModulesBuilder().add(new SettingsModule(settings),
+                new EnvironmentModule(new Environment(settings)), new IndicesAnalysisModule()).createInjector();
         Injector injector = new ModulesBuilder().add(
-                new IndexSettingsModule(index, EMPTY_SETTINGS),
+                new IndexSettingsModule(index, settings),
                 new IndexNameModule(index),
-                new AnalysisModule(EMPTY_SETTINGS, parentInjector.getInstance(IndicesAnalysisService.class))
+                new AnalysisModule(settings, parentInjector.getInstance(IndicesAnalysisService.class))
                         .addProcessor(new MorphologyAnalysisBinderProcessor()))
                 .createChildInjector(parentInjector);
 
@@ -104,7 +113,7 @@ public class SimpleMorphologyAnalysisTests {
         MorphologyAnalyzer russianAnalyzer = new MorphologyAnalyzer(russianLuceneMorphology);
         TokenStream stream = russianAnalyzer.tokenStream("name", new FastStringReader("тест пм тест"));
         MorphologyFilter englishFilter = new MorphologyFilter(stream, englishLuceneMorphology);
-        assertSimpleTSOutput(englishFilter, new String[] {"тест", "тесто", "", "тест", "тесто"});
+        assertSimpleTSOutput(englishFilter, new String[] {"тест", "тесто", "пм", "тест", "тесто"});
     }
 
 }
