@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.elasticsearch</groupId>
     <artifactId>elasticsearch-analysis-morphology</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description>Russian Morphology for ElasticSearch</description>
     <inceptionYear>2012</inceptionYear>
@@ -20,7 +20,7 @@
         <developerConnection>scm:git:git@github.com:imotov/elasticsearch-analysis-morphology.git
         </developerConnection>
         <url>http://github.com/imotov/elasticsearch-analysis-morphology</url>
-      <tag>v1.2.1</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <parent>
