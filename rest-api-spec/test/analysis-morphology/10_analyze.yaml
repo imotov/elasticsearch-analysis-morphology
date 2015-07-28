@@ -1,0 +1,13 @@
+# Basic integration tests for the morphology analysis plugin
+#
+---
+"Russian analyzer and filter":
+    - do:
+        indices.analyze:
+          tokenizer:    standard
+          filters:      ["lowercase", "russian_morphology"]
+          text:         Японские автомобили
+    - length: { tokens: 2 }
+    - match:     { tokens.0.token: японский }
+    - match:     { tokens.1.token: автомобиль }
+
