@@ -42,7 +42,7 @@ import org.elasticsearch.index.analysis.NamedAnalyzer;
 import org.elasticsearch.index.settings.IndexSettingsModule;
 import org.elasticsearch.indices.analysis.IndicesAnalysisModule;
 import org.elasticsearch.indices.analysis.IndicesAnalysisService;
-import org.elasticsearch.test.ElasticsearchTestCase;
+import org.elasticsearch.test.ESIntegTestCase;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -54,7 +54,7 @@ import static org.hamcrest.Matchers.instanceOf;
 /**
  *
  */
-public class SimpleMorphologyAnalysisTests extends ElasticsearchTestCase {
+public class SimpleMorphologyAnalysisTests extends ESIntegTestCase {
 
     private AnalysisService getAnalysisService() {
         Index index = new Index("test");
