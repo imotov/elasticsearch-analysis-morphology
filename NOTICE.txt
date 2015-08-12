@@ -1,0 +1,12 @@
+This product includes software developed by The Apache Software
+Foundation (http://www.apache.org/).
+
+morph-*.jar, russian-*.jar, and english-*.jar are under the ASL license, the 
+original source code for these can be found at 
+https://github.com/AKuznetsov/russianmorphology. The dictionaries in these 
+libaries are based on open source dictionary developed by working group Aot.ru 
+and licensed under LGPL license. The original source code for these 
+dictionaries can be found at http://aot.ru/.
+
+The LICENSE and NOTICE files for all dependencies may be found in the licenses/
+directory.
