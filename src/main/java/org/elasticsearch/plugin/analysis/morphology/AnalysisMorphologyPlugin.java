@@ -21,14 +21,14 @@ import org.elasticsearch.common.inject.Module;
 import org.elasticsearch.index.analysis.AnalysisModule;
 import org.elasticsearch.index.analysis.morphology.MorphologyAnalysisBinderProcessor;
 import org.elasticsearch.indices.analysis.morphology.MorphologyIndicesAnalysisModule;
-import org.elasticsearch.plugins.AbstractPlugin;
+import org.elasticsearch.plugins.Plugin;
 
 import java.util.Collection;
 
 /**
  *
  */
-public class AnalysisMorphologyPlugin extends AbstractPlugin {
+public class AnalysisMorphologyPlugin extends Plugin {
 
     @Override
     public String name() {
@@ -41,8 +41,8 @@ public class AnalysisMorphologyPlugin extends AbstractPlugin {
     }
 
     @Override
-    public Collection<Class<? extends Module>> modules() {
-        return ImmutableList.<Class<? extends Module>>of(MorphologyIndicesAnalysisModule.class);
+    public Collection<Module> nodeModules() {
+        return ImmutableList.<Module>of(new MorphologyIndicesAnalysisModule());
     }
 
     public void onModule(AnalysisModule module) {
