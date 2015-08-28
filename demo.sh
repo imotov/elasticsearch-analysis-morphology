@@ -31,7 +31,7 @@ curl -XPUT 'http://localhost:9200/rustest/type2/_mapping' -d '{
 	"type2": {
         "_all" : {"analyzer" : "russian_morphology"},
     	"properties" : {
-        	"body" : { "type" : "string", "analyzer" : "my_analyzer" }
+        	"text" : { "type" : "string", "analyzer" : "my_analyzer" }
     	}
 	}
 }' && echo
@@ -57,16 +57,16 @@ curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": 
 echo "Should return 1,2,3,4"
 curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:авто*", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
 
-curl -XPUT 'http://localhost:9200/rustest/type2/1' -d '{"body": "Curiously enough, the only thing that went through the mind of the bowl of petunias as it fell was Oh no, not again."}' && echo
-curl -XPUT 'http://localhost:9200/rustest/type2/2' -d '{"body": "Many people have speculated that if we knew exactly why the bowl of petunias had thought that we would know a lot more about the nature of the Universe than we do now."}' && echo
-curl -XPUT 'http://localhost:9200/rustest/type2/3' -d '{"body": "Не повезло только кашалоту, который внезапно возник из небытия в нескольких милях над поверхностью планеты."}' && echo
+curl -XPUT 'http://localhost:9200/rustest/type2/1' -d '{"text": "Curiously enough, the only thing that went through the mind of the bowl of petunias as it fell was Oh no, not again."}' && echo
+curl -XPUT 'http://localhost:9200/rustest/type2/2' -d '{"text": "Many people have speculated that if we knew exactly why the bowl of petunias had thought that we would know a lot more about the nature of the Universe than we do now."}' && echo
+curl -XPUT 'http://localhost:9200/rustest/type2/3' -d '{"text": "Не повезло только кашалоту, который внезапно возник из небытия в нескольких милях над поверхностью планеты."}' && echo
 curl -XPOST 'http://localhost:9200/rustest/_refresh' && echo
 echo "Should return 3"
-curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:\"миль по поверхности\"", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "text:\"миль по поверхности\"", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
 echo "Should return 1"
-curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:go", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "text:go", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
 echo "Should return 2"
-curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:thinking", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "text:thinking", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
 echo "Searching _all field"
 curl -XPOST 'localhost:9200/rustest/_search?pretty' -d '{
   "query": { 
