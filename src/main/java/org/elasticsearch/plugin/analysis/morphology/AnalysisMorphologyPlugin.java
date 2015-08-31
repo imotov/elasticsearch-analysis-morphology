@@ -16,7 +16,6 @@
 
 package org.elasticsearch.plugin.analysis.morphology;
 
-import com.google.common.collect.ImmutableList;
 import org.elasticsearch.common.inject.Module;
 import org.elasticsearch.index.analysis.AnalysisModule;
 import org.elasticsearch.index.analysis.morphology.MorphologyAnalysisBinderProcessor;
@@ -24,6 +23,7 @@ import org.elasticsearch.indices.analysis.morphology.MorphologyIndicesAnalysisMo
 import org.elasticsearch.plugins.Plugin;
 
 import java.util.Collection;
+import java.util.Collections;
 
 /**
  *
@@ -42,7 +42,7 @@ public class AnalysisMorphologyPlugin extends Plugin {
 
     @Override
     public Collection<Module> nodeModules() {
-        return ImmutableList.<Module>of(new MorphologyIndicesAnalysisModule());
+        return Collections.<Module>singletonList(new MorphologyIndicesAnalysisModule());
     }
 
     public void onModule(AnalysisModule module) {
