@@ -37,10 +37,10 @@ In order to install the plugin, simply run the following command in the elastics
 bin/plugin install URL
 </pre>
 
-where @URL@ is the URL of the plugin from the compatibility table. For examples to install version @2.0.0@ run
+where @URL@ is the URL of the plugin from the compatibility table. For examples to install version @2.1.0@ run
 
 <pre>
-bin/plugin install http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.0.0/elasticsearch-analysis-morphology-2.0.0.zip
+bin/plugin install http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.1.0/elasticsearch-analysis-morphology-2.1.0.zip
 </pre>
 
 h2. Upgrade to 1.2.0
