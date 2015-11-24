@@ -24,7 +24,7 @@ import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.index.Index;
 import org.elasticsearch.index.analysis.AbstractTokenFilterFactory;
-import org.elasticsearch.index.settings.IndexSettings;
+import org.elasticsearch.index.settings.IndexSettingsService;
 
 import java.io.IOException;
 
@@ -36,8 +36,8 @@ public class EnglishMorphologyTokenFilterFactory extends AbstractTokenFilterFact
     private final LuceneMorphology luceneMorph;
 
     @Inject
-    public EnglishMorphologyTokenFilterFactory(Index index, @IndexSettings Settings indexSettings, String name, Settings settings) {
-        super(index, indexSettings, name, settings);
+    public EnglishMorphologyTokenFilterFactory(Index index, IndexSettingsService indexSettingsService, String name, Settings settings) {
+        super(index, indexSettingsService.indexSettings(), name, settings);
         try {
             luceneMorph = new EnglishLuceneMorphology();
         } catch (IOException ex) {
