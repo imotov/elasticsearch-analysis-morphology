@@ -10,7 +10,9 @@ The following table shows the compatible versions of Elasticsearch and Morpholog
 
 |_. Morphological Analysis Plugin |_.  Elasticsearch   |_. URL  |
 | master                          | 2.x  |  |
+| 2.1.1                           | 2.1.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.1.1/elasticsearch-analysis-morphology-2.1.1.zip |
 | 2.1.0                           | 2.1.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.1.0/elasticsearch-analysis-morphology-2.1.0.zip |
+| 2.0.2                           | 2.0.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.0.2/elasticsearch-analysis-morphology-2.0.2.zip |
 | 2.0.1                           | 2.0.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.0.1/elasticsearch-analysis-morphology-2.0.1.zip |
 | 2.0.0                           | 2.0.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.0.0/elasticsearch-analysis-morphology-2.0.0.zip |
 | 2.0.0-beta1                     | 2.0.0-beta1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.0.0-beta1/elasticsearch-analysis-morphology-2.0.0-beta1.zip |
@@ -37,10 +39,10 @@ In order to install the plugin, simply run the following command in the elastics
 bin/plugin install URL
 </pre>
 
-where @URL@ is the URL of the plugin from the compatibility table. For examples to install version @2.1.0@ run
+where @URL@ is the URL of the plugin from the compatibility table. For examples to install version @2.1.1@ run
 
 <pre>
-bin/plugin install http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.1.0/elasticsearch-analysis-morphology-2.1.0.zip
+bin/plugin install http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.1.1/elasticsearch-analysis-morphology-2.1.1.zip
 </pre>
 
 h2. Upgrade to 1.2.0
