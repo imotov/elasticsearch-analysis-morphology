@@ -14,35 +14,30 @@
  * limitations under the License.
  */
 
-package org.elasticsearch.index.analysis.morphology.english;
+package org.elasticsearch.plugin.analysis.morphology;
 
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.morphology.LuceneMorphology;
 import org.apache.lucene.morphology.analyzer.MorphologyFilter;
 import org.apache.lucene.morphology.english.EnglishLuceneMorphology;
-import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.index.Index;
+import org.elasticsearch.env.Environment;
+import org.elasticsearch.index.IndexSettings;
 import org.elasticsearch.index.analysis.AbstractTokenFilterFactory;
-import org.elasticsearch.index.settings.IndexSettingsService;
 
 import java.io.IOException;
 
 /**
  *
  */
-public class EnglishMorphologyTokenFilterFactory extends AbstractTokenFilterFactory {
+public class MorphologyTokenFilterFactory extends AbstractTokenFilterFactory {
 
     private final LuceneMorphology luceneMorph;
 
-    @Inject
-    public EnglishMorphologyTokenFilterFactory(Index index, IndexSettingsService indexSettingsService, String name, Settings settings) {
-        super(index, indexSettingsService.indexSettings(), name, settings);
-        try {
-            luceneMorph = new EnglishLuceneMorphology();
-        } catch (IOException ex) {
-            throw new IllegalArgumentException("Unable to load English morphology analyzer", ex);
-        }
+    public MorphologyTokenFilterFactory(IndexSettings indexSettings, Environment environment, String name,
+                                        Settings settings, LuceneMorphology englishLuceneMorphology) {
+        super(indexSettings, name, settings);
+        luceneMorph = englishLuceneMorphology;
     }
 
     @Override

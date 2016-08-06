@@ -5,7 +5,7 @@
     - do:
         indices.analyze:
           tokenizer:    standard
-          filters:      ["lowercase", "russian_morphology"]
+          filter:      ["lowercase", "russian_morphology"]
           text:         Японские автомобили
     - length: { tokens: 2 }
     - match:     { tokens.0.token: японский }

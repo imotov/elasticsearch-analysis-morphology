@@ -18,21 +18,22 @@ package org.elasticsearch.plugin.analysis.morphology;
 
 import com.carrotsearch.randomizedtesting.annotations.Name;
 import com.carrotsearch.randomizedtesting.annotations.ParametersFactory;
-import org.elasticsearch.test.rest.ESRestTestCase;
-import org.elasticsearch.test.rest.RestTestCandidate;
-import org.elasticsearch.test.rest.parser.RestTestParseException;
+import org.elasticsearch.test.rest.yaml.ClientYamlTestCandidate;
+import org.elasticsearch.test.rest.yaml.ESClientYamlSuiteTestCase;
+import org.elasticsearch.test.rest.yaml.parser.ClientYamlTestParseException;
 
 import java.io.IOException;
 
-public class AnalysisMorphologyRestIT extends ESRestTestCase {
+public class AnalysisMorphologyRestIT extends ESClientYamlSuiteTestCase {
 
-    public AnalysisMorphologyRestIT(@Name("yaml") RestTestCandidate testCandidate) {
+    public AnalysisMorphologyRestIT(@Name("yaml") ClientYamlTestCandidate testCandidate) {
         super(testCandidate);
     }
 
     @ParametersFactory
-    public static Iterable<Object[]> parameters() throws IOException, RestTestParseException {
-        return ESRestTestCase.createParameters(0, 1);
+    public static Iterable<Object[]> parameters() throws IOException, ClientYamlTestParseException {
+        return ESClientYamlSuiteTestCase.createParameters(0, 1);
     }
 }
+
 

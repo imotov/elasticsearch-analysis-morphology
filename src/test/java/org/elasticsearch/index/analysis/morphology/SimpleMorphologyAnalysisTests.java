@@ -25,55 +25,27 @@ import org.apache.lucene.morphology.english.EnglishAnalyzer;
 import org.apache.lucene.morphology.english.EnglishLuceneMorphology;
 import org.apache.lucene.morphology.russian.RussianAnalyzer;
 import org.apache.lucene.morphology.russian.RussianLuceneMorphology;
-import org.elasticsearch.Version;
-import org.elasticsearch.cluster.metadata.IndexMetaData;
-import org.elasticsearch.common.inject.Injector;
-import org.elasticsearch.common.inject.ModulesBuilder;
 import org.elasticsearch.common.io.FastStringReader;
 import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.settings.SettingsModule;
-import org.elasticsearch.env.Environment;
-import org.elasticsearch.env.EnvironmentModule;
 import org.elasticsearch.index.Index;
-import org.elasticsearch.index.IndexNameModule;
-import org.elasticsearch.index.analysis.AnalysisModule;
 import org.elasticsearch.index.analysis.AnalysisService;
 import org.elasticsearch.index.analysis.NamedAnalyzer;
-import org.elasticsearch.index.settings.IndexSettingsModule;
-import org.elasticsearch.indices.analysis.IndicesAnalysisService;
-import org.elasticsearch.test.ESIntegTestCase;
+import org.elasticsearch.plugin.analysis.morphology.AnalysisMorphologyPlugin;
+import org.elasticsearch.test.ESTestCase;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.StringReader;
 
-import static org.elasticsearch.common.settings.Settings.settingsBuilder;
 import static org.hamcrest.Matchers.instanceOf;
 
 /**
  *
  */
-public class SimpleMorphologyAnalysisTests extends ESIntegTestCase {
+public class SimpleMorphologyAnalysisTests extends ESTestCase {
 
-    private AnalysisService getAnalysisService() {
-        Index index = new Index("test");
-        Settings settings = settingsBuilder()
-                .put("path.home", createTempDir())
-                .put(IndexMetaData.SETTING_VERSION_CREATED, Version.CURRENT)
-                .build();
-
-
-        Injector parentInjector = new ModulesBuilder().add(new SettingsModule(settings),
-                new EnvironmentModule(new Environment(settings))).createInjector();
-        Injector injector = new ModulesBuilder().add(
-                new IndexSettingsModule(index, settings),
-                new IndexNameModule(index),
-                new AnalysisModule(settings, parentInjector.getInstance(IndicesAnalysisService.class))
-                        .addProcessor(new MorphologyAnalysisBinderProcessor()))
-                .createChildInjector(parentInjector);
-
-        return injector.getInstance(AnalysisService.class);
-
+    private AnalysisService getAnalysisService() throws IOException {
+        return createAnalysisService(new Index("test", "_na_"), Settings.EMPTY, new AnalysisMorphologyPlugin());
     }
 
     public static void assertSimpleTSOutput(TokenStream stream, String[] expected) throws IOException {
@@ -89,20 +61,18 @@ public class SimpleMorphologyAnalysisTests extends ESIntegTestCase {
         assertEquals("not all tokens produced", expected.length, i);
     }
 
-    @Test
     public void testMorphologyAnalysis() throws Exception {
         AnalysisService analysisService = getAnalysisService();
 
         NamedAnalyzer russianAnalyzer = analysisService.analyzer("russian_morphology");
-        assertThat(russianAnalyzer.analyzer(), instanceOf(RussianAnalyzer.class));
+        assertThat(russianAnalyzer.analyzer(), instanceOf(MorphologyAnalyzer.class));
         assertSimpleTSOutput(russianAnalyzer.tokenStream("test", new StringReader("тест")), new String[] {"тест", "тесто"});
 
         NamedAnalyzer englishAnalyzer = analysisService.analyzer("english_morphology");
-        assertThat(englishAnalyzer.analyzer(), instanceOf(EnglishAnalyzer.class));
+        assertThat(englishAnalyzer.analyzer(), instanceOf(MorphologyAnalyzer.class));
         assertSimpleTSOutput(englishAnalyzer.tokenStream("test", new StringReader("gone")), new String[]{"gone", "go"});
     }
 
-    @Test
     public void testPm() throws Exception {
         LuceneMorphology russianLuceneMorphology = new RussianLuceneMorphology();
         LuceneMorphology englishLuceneMorphology = new EnglishLuceneMorphology();

@@ -16,36 +16,59 @@
 
 package org.elasticsearch.plugin.analysis.morphology;
 
-import org.elasticsearch.common.inject.Module;
-import org.elasticsearch.index.analysis.AnalysisModule;
-import org.elasticsearch.index.analysis.morphology.MorphologyAnalysisBinderProcessor;
-import org.elasticsearch.indices.analysis.morphology.MorphologyIndicesAnalysisModule;
+import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.morphology.english.EnglishLuceneMorphology;
+import org.apache.lucene.morphology.russian.RussianLuceneMorphology;
+import org.elasticsearch.index.analysis.AnalyzerProvider;
+import org.elasticsearch.index.analysis.TokenFilterFactory;
+import org.elasticsearch.indices.analysis.AnalysisModule;
+import org.elasticsearch.plugins.AnalysisPlugin;
 import org.elasticsearch.plugins.Plugin;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  */
-public class AnalysisMorphologyPlugin extends Plugin {
+public class AnalysisMorphologyPlugin extends Plugin implements AnalysisPlugin {
 
-    @Override
-    public String name() {
-        return "analysis-morphology";
+    private final RussianLuceneMorphology russianLuceneMorphology;
+    private final EnglishLuceneMorphology englishLuceneMorphology;
+
+    public AnalysisMorphologyPlugin() {
+        super();
+        try {
+            russianLuceneMorphology = new RussianLuceneMorphology();
+        } catch (IOException ex) {
+            throw new IllegalStateException("unable to load russian morphology info", ex);
+        }
+        try {
+            englishLuceneMorphology = new EnglishLuceneMorphology();
+        } catch (IOException ex) {
+            throw new IllegalStateException("unable to load english morphology info", ex);
+        }
     }
 
     @Override
-    public String description() {
-        return "Morphology analysis support";
+    public Map<String, AnalysisModule.AnalysisProvider<TokenFilterFactory>> getTokenFilters() {
+        Map<String, AnalysisModule.AnalysisProvider<TokenFilterFactory>> extra = new HashMap<>();
+        extra.put("russian_morphology", (indexSettings, environment, name, settings) ->
+                new MorphologyTokenFilterFactory(indexSettings, environment, name, settings, russianLuceneMorphology));
+        extra.put("english_morphology", (indexSettings, environment, name, settings) ->
+                new MorphologyTokenFilterFactory(indexSettings, environment, name, settings, englishLuceneMorphology));
+        return extra;
     }
 
     @Override
-    public Collection<Module> nodeModules() {
-        return Collections.<Module>singletonList(new MorphologyIndicesAnalysisModule());
+    public Map<String, AnalysisModule.AnalysisProvider<AnalyzerProvider<? extends Analyzer>>> getAnalyzers() {
+        Map<String, AnalysisModule.AnalysisProvider<AnalyzerProvider<? extends Analyzer>>> extra = new HashMap<>();
+        extra.put("russian_morphology", (indexSettings, environment, name, settings) ->
+                new MorphologyAnalyzerProvider(indexSettings, environment, name, settings, russianLuceneMorphology));
+        extra.put("english_morphology", (indexSettings, environment, name, settings) ->
+                new MorphologyAnalyzerProvider(indexSettings, environment, name, settings, englishLuceneMorphology));
+        return extra;
     }
 
-    public void onModule(AnalysisModule module) {
-        module.addProcessor(new MorphologyAnalysisBinderProcessor());
-    }
 }
