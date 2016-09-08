@@ -23,8 +23,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        // Version of elasticsearch
-        classpath "org.elasticsearch.gradle:build-tools:5.0.0-alpha5-SNAPSHOT"
+        classpath "org.elasticsearch.gradle:build-tools:5.0.0-alpha5"
     }
 }
 
@@ -33,7 +32,13 @@ apply plugin: 'eclipse'
 apply plugin: 'elasticsearch.esplugin'
 apply plugin: 'com.bmuschko.nexus'
 
-// Version of the plugin
+repositories {
+    maven {
+        name 'bintray-akuznetsov-russianmorphology'
+        url "http://dl.bintray.com/akuznetsov/russianmorphology"
+    }
+}
+
 version = '5.0.0-SNAPSHOT'
 
 esplugin {
@@ -42,13 +47,11 @@ esplugin {
     name 'analysis-morphology'
 }
 
-//ext.compactProfile = 'full'
-
 dependencies {
     // Not really used at the moment - just to show how to include dependencies
-    compile "org.apache.lucene.morphology:russian:1.2-SNAPSHOT"
-    compile "org.apache.lucene.morphology:english:1.2-SNAPSHOT"
-    compile "org.apache.lucene.morphology:morph:1.2-SNAPSHOT"
+    compile "org.apache.lucene.morphology:russian:1.1"
+    compile "org.apache.lucene.morphology:english:1.1"
+    compile "org.apache.lucene.morphology:morph:1.1"
 }
 
 // TODO: temporary workaround until it's fixed in elasticsearch
