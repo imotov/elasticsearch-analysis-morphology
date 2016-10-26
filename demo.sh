@@ -43,30 +43,30 @@ curl -XPUT 'http://localhost:9200/rustest/type1/5' -d '{"body": "Январск�
 curl -XPUT 'http://localhost:9200/rustest/type1/6' -d '{"body": "Японская корпорация Sony представила новый смартфон под названием Xperia Sola."}' && echo
 curl -XPOST 'http://localhost:9200/rustest/_refresh' && echo
 echo "Should return 5"
-curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:Япония"}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:Япония"}}}'  | grep "_id"
 echo "Should return 4, 6"
-curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:Японский"}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:Японский"}}}'  | grep "_id"
 echo "Should return 4"
-curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:первый"}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:первый"}}}'  | grep "_id"
 echo "Should return 1, 4"
-curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:автомобиль"}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:автомобиль"}}}'  | grep "_id"
 echo "Should return 2"
-curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:автомобильный"}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:автомобильный"}}}'  | grep "_id"
 echo "Should return 3"
-curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:авто"}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:авто"}}}'  | grep "_id"
 echo "Should return 1,2,3,4"
-curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:авто*", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type1/_search?pretty=true' -d '{"query": {"query_string": {"query": "body:авто*", "analyze_wildcard": true}}}'  | grep "_id"
 
 curl -XPUT 'http://localhost:9200/rustest/type2/1' -d '{"text": "Curiously enough, the only thing that went through the mind of the bowl of petunias as it fell was Oh no, not again."}' && echo
 curl -XPUT 'http://localhost:9200/rustest/type2/2' -d '{"text": "Many people have speculated that if we knew exactly why the bowl of petunias had thought that we would know a lot more about the nature of the Universe than we do now."}' && echo
 curl -XPUT 'http://localhost:9200/rustest/type2/3' -d '{"text": "Не повезло только кашалоту, который внезапно возник из небытия в нескольких милях над поверхностью планеты."}' && echo
 curl -XPOST 'http://localhost:9200/rustest/_refresh' && echo
 echo "Should return 3"
-curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "text:\"миль по поверхности\"", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "text:\"миль по поверхности\"", "analyze_wildcard": true}}}'  | grep "_id"
 echo "Should return 1"
-curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "text:go", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "text:go", "analyze_wildcard": true}}}'  | grep "_id"
 echo "Should return 2"
-curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "text:thinking", "analyze_wildcard": true}}, "fields":["_id"]}'  | grep "_id"
+curl -s 'http://localhost:9200/rustest/type2/_search?pretty=true' -d '{"query": {"query_string": {"query": "text:thinking", "analyze_wildcard": true}}}'  | grep "_id"
 echo "Searching _all field"
 curl -XPOST 'localhost:9200/rustest/_search?pretty' -d '{
   "query": { 
