@@ -4,10 +4,11 @@
 "Russian analyzer and filter":
     - do:
         indices.analyze:
-          tokenizer:    standard
-          filter:      ["lowercase", "russian_morphology"]
-          text:         Японские автомобили
+          body:
+            tokenizer:    standard
+            filter:      ["lowercase", "russian_morphology"]
+            text:         Японские автомобили
     - length: { tokens: 2 }
-    - match:     { tokens.0.token: японский }
-    - match:     { tokens.1.token: автомобиль }
+    - match:  { tokens.0.token: японский }
+    - match:  { tokens.1.token: автомобиль }
 

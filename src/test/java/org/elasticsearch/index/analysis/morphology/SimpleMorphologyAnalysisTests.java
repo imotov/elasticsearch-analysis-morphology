@@ -21,18 +21,14 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.morphology.LuceneMorphology;
 import org.apache.lucene.morphology.analyzer.MorphologyAnalyzer;
 import org.apache.lucene.morphology.analyzer.MorphologyFilter;
-import org.apache.lucene.morphology.english.EnglishAnalyzer;
 import org.apache.lucene.morphology.english.EnglishLuceneMorphology;
-import org.apache.lucene.morphology.russian.RussianAnalyzer;
 import org.apache.lucene.morphology.russian.RussianLuceneMorphology;
 import org.elasticsearch.common.io.FastStringReader;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.index.Index;
-import org.elasticsearch.index.analysis.AnalysisService;
 import org.elasticsearch.index.analysis.NamedAnalyzer;
 import org.elasticsearch.plugin.analysis.morphology.AnalysisMorphologyPlugin;
 import org.elasticsearch.test.ESTestCase;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -44,8 +40,8 @@ import static org.hamcrest.Matchers.instanceOf;
  */
 public class SimpleMorphologyAnalysisTests extends ESTestCase {
 
-    private AnalysisService getAnalysisService() throws IOException {
-        return createAnalysisService(new Index("test", "_na_"), Settings.EMPTY, new AnalysisMorphologyPlugin());
+    private TestAnalysis getAnalysisService() throws IOException {
+        return createTestAnalysis(new Index("test", "_na_"), Settings.EMPTY, new AnalysisMorphologyPlugin());
     }
 
     public static void assertSimpleTSOutput(TokenStream stream, String[] expected) throws IOException {
@@ -62,13 +58,13 @@ public class SimpleMorphologyAnalysisTests extends ESTestCase {
     }
 
     public void testMorphologyAnalysis() throws Exception {
-        AnalysisService analysisService = getAnalysisService();
+        TestAnalysis testAnalysis = getAnalysisService();
 
-        NamedAnalyzer russianAnalyzer = analysisService.analyzer("russian_morphology");
+        NamedAnalyzer russianAnalyzer = testAnalysis.indexAnalyzers.get("russian_morphology");
         assertThat(russianAnalyzer.analyzer(), instanceOf(MorphologyAnalyzer.class));
         assertSimpleTSOutput(russianAnalyzer.tokenStream("test", new StringReader("тест")), new String[] {"тест", "тесто"});
 
-        NamedAnalyzer englishAnalyzer = analysisService.analyzer("english_morphology");
+        NamedAnalyzer englishAnalyzer = testAnalysis.indexAnalyzers.get("english_morphology");
         assertThat(englishAnalyzer.analyzer(), instanceOf(MorphologyAnalyzer.class));
         assertSimpleTSOutput(englishAnalyzer.tokenStream("test", new StringReader("gone")), new String[]{"gone", "go"});
     }
