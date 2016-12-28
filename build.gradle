@@ -41,7 +41,7 @@ apply plugin: 'maven-publish'
 //    }
 //}
 
-version = '5.1.1'
+version = '5.1.1.1-SNAPSHOT'
 
 esplugin {
     description 'English and Russian Morphology for ElasticSearch.'
