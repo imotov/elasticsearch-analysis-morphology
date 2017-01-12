@@ -9,6 +9,7 @@ h2. Compatibility
 The following table shows the compatible versions of Elasticsearch and Morphological Analysis Plugin.
 
 |_. Morphological Analysis Plugin |_.  Elasticsearch   |_. URL  |
+| 2.4.4                           | 2.4.4  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.4/elasticsearch-analysis-morphology-2.4.4.zip |
 | 2.4.3                           | 2.4.3  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.3/elasticsearch-analysis-morphology-2.4.3.zip |
 | 2.4.2                           | 2.4.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.2/elasticsearch-analysis-morphology-2.4.2.zip |
 | 2.4.1                           | 2.4.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.1/elasticsearch-analysis-morphology-2.4.1.zip |
@@ -52,10 +53,10 @@ In order to install the plugin, simply run the following command in the elastics
 bin/plugin install URL
 </pre>
 
-where @URL@ is the URL of the plugin from the compatibility table. For examples to install version @2.4.3@ run
+where @URL@ is the URL of the plugin from the compatibility table. For examples to install version @2.4.4@ run
 
 <pre>
-bin/plugin install http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.3/elasticsearch-analysis-morphology-2.4.3.zip
+bin/plugin install http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.4/elasticsearch-analysis-morphology-2.4.4.zip
 </pre>
 
 h2. Upgrade to 1.2.0
