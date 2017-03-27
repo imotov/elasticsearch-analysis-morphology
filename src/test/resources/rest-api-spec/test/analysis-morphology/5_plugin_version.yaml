@@ -1,0 +1,18 @@
+# Basic integration tests for the morphology analysis plugin
+#
+---
+"Russian analyzer and filter":
+  - do:
+      cluster.state: {}
+
+  # Get master node id
+  - set: { master_node: master }
+
+  - do:
+      nodes.info:
+        metric: [ plugins ]
+
+  - match : { nodes.$master.plugins.0.name: "analysis-morphology" }
+  - match :
+      nodes.$master.plugins.0.version: |
+                                          /^\d+\.\d+\.\d+(\.\d+)?$/
