@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * Plugin for russian/english morphology analyzer
  */
 public class AnalysisMorphologyPlugin extends Plugin implements AnalysisPlugin {
 

@@ -24,7 +24,7 @@ import org.elasticsearch.index.IndexSettings;
 import org.elasticsearch.index.analysis.AbstractIndexAnalyzerProvider;
 
 /**
- *
+ * Provider for russian/english morphology analyzer
  */
 public class MorphologyAnalyzerProvider extends AbstractIndexAnalyzerProvider<MorphologyAnalyzer> {
 

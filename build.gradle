@@ -23,7 +23,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "org.elasticsearch.gradle:build-tools:5.4.0"
+        classpath "org.elasticsearch.gradle:build-tools:6.0.0-alpha1"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7"
     }
 }
@@ -41,7 +41,7 @@ apply plugin: 'maven-publish'
 //    }
 //}
 
-version = '5.4.0'
+version = '6.0.0-alpha1-SNAPSHOT'
 
 esplugin {
     description 'English and Russian Morphology for ElasticSearch.'
@@ -51,9 +51,9 @@ esplugin {
 esplugin.version = version
 
 dependencies {
-    compile "org.apache.lucene.morphology:russian:1.3-SNAPSHOT"
-    compile "org.apache.lucene.morphology:english:1.3-SNAPSHOT"
-    compile "org.apache.lucene.morphology:morph:1.3-SNAPSHOT"
+    compile "org.apache.lucene.morphology:russian:1.4-SNAPSHOT"
+    compile "org.apache.lucene.morphology:english:1.4-SNAPSHOT"
+    compile "org.apache.lucene.morphology:morph:1.4-SNAPSHOT"
 }
 
 publishing {

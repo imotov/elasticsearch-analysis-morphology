@@ -35,9 +35,6 @@ import java.io.StringReader;
 
 import static org.hamcrest.Matchers.instanceOf;
 
-/**
- *
- */
 public class SimpleMorphologyAnalysisTests extends ESTestCase {
 
     private TestAnalysis getAnalysisService() throws IOException {

@@ -28,7 +28,7 @@ import org.elasticsearch.index.analysis.AbstractTokenFilterFactory;
 import java.io.IOException;
 
 /**
- *
+ * Russian/english morphology token filter factory
  */
 public class MorphologyTokenFilterFactory extends AbstractTokenFilterFactory {
 
