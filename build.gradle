@@ -41,13 +41,13 @@ apply plugin: 'maven-publish'
 //    }
 //}
 
-version = '5.4.1'
+version = '5.4.2'
 
 esplugin {
     description 'English and Russian Morphology for ElasticSearch.'
     classname 'org.elasticsearch.plugin.analysis.morphology.AnalysisMorphologyPlugin'
     name 'analysis-morphology'
-    version '5.4.1'
+    version '5.4.2'
 }
 
 dependencies {
