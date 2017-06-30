@@ -39,11 +39,9 @@ public class SimpleMorphologyAnalysisTests extends ESTestCase {
 
     private TestAnalysis getAnalysisService() throws IOException {
         Settings indexSettings = Settings.builder()
-                .put("index.analysis.filter.no_stem.type", "keyword_marker")
-                .putArray("index.analysis.filter.no_stem.keywords", "мечел")
                 .put("index.analysis.analyzer.test.type", "custom")
                 .put("index.analysis.analyzer.test.tokenizer", "standard")
-                .putArray("index.analysis.analyzer.test.filter", "lowercase", "no_stem", "russian_morphology")
+                .putArray("index.analysis.analyzer.test.filter", "lowercase", "russian_morphology")
                 .build();
 
         return createTestAnalysis(new Index("test", "_na_"), indexSettings, new AnalysisMorphologyPlugin());
@@ -82,12 +80,5 @@ public class SimpleMorphologyAnalysisTests extends ESTestCase {
         TokenStream stream = russianAnalyzer.tokenStream("name", new FastStringReader("тест пм тест"));
         MorphologyFilter englishFilter = new MorphologyFilter(stream, englishLuceneMorphology);
         assertSimpleTSOutput(englishFilter, new String[] {"тест", "тесто", "пм", "тест", "тесто"});
-    }
-
-    public void testKeywordMarkerSupport() throws Exception {
-        TestAnalysis testAnalysis = getAnalysisService();
-
-        NamedAnalyzer russianAnalyzer = testAnalysis.indexAnalyzers.get("test");
-        assertSimpleTSOutput(russianAnalyzer.tokenStream("test", new StringReader("мечел")), new String[] {"мечел"});
     }
 }

@@ -23,7 +23,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "org.elasticsearch.gradle:build-tools:6.0.0-alpha1"
+        classpath "org.elasticsearch.gradle:build-tools:6.0.0-alpha2"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7"
     }
 }
@@ -41,7 +41,7 @@ apply plugin: 'maven-publish'
 //    }
 //}
 
-version = '6.0.0-alpha1-SNAPSHOT'
+version = '6.0.0-alpha2-SNAPSHOT'
 
 esplugin {
     description 'English and Russian Morphology for ElasticSearch.'
