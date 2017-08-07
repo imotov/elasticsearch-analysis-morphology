@@ -9,6 +9,7 @@ h2. Compatibility
 The following table shows the compatible versions of Elasticsearch and Morphological Analysis Plugin.
 
 |_. Morphological Analysis Plugin |_.  Elasticsearch   |_. URL  |
+| 5.5.1                           | 5.5.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.5.1/elasticsearch-analysis-morphology-5.5.1.zip |
 | 5.5.0                           | 5.5.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.5.0/elasticsearch-analysis-morphology-5.5.0.zip |
 | 5.4.3                           | 5.4.3  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.4.3/elasticsearch-analysis-morphology-5.4.3.zip |
 | 5.4.2.1                         | 5.4.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.4.2.1/elasticsearch-analysis-morphology-5.4.2.1.zip |
@@ -26,6 +27,7 @@ The following table shows the compatible versions of Elasticsearch and Morpholog
 | 5.0.2                           | 5.0.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.0.2/elasticsearch-analysis-morphology-5.0.2.zip |
 | 5.0.1                           | 5.0.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.0.1/elasticsearch-analysis-morphology-5.0.1.zip |
 | 5.0.0                           | 5.0.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.0.0/elasticsearch-analysis-morphology-5.0.0.zip |
+| 2.4.6                           | 2.4.6  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.6/elasticsearch-analysis-morphology-2.4.6.zip |
 | 2.4.5                           | 2.4.5  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.5/elasticsearch-analysis-morphology-2.4.5.zip |
 | 2.4.4                           | 2.4.4  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.4/elasticsearch-analysis-morphology-2.4.4.zip |
 | 2.4.3                           | 2.4.3  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.3/elasticsearch-analysis-morphology-2.4.3.zip |
@@ -61,10 +63,10 @@ In order to install the plugin, simply run the following command in the elastics
 bin/elasticsearch-plugin install URL
 </pre>
 
-where @URL@ is the URL of the plugin from the compatibility table. For examples to install version @5.5.0@ run
+where @URL@ is the URL of the plugin from the compatibility table. For examples to install version @5.5.1@ run
 
 <pre>
-bin/elasticsearch-plugin install http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.5.0/elasticsearch-analysis-morphology-5.5.0.zip
+bin/elasticsearch-plugin install http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.5.1/elasticsearch-analysis-morphology-5.5.1.zip
 </pre>
 
 h2. Installation on 2.x
@@ -75,10 +77,10 @@ In order to install the plugin, simply run the following command in the elastics
 bin/plugin install URL
 </pre>
 
-where @URL@ is the URL of the plugin from the compatibility table. For examples to install version @2.4.5@ run
+where @URL@ is the URL of the plugin from the compatibility table. For examples to install version @2.4.6@ run
 
 <pre>
-bin/plugin install http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.5/elasticsearch-analysis-morphology-2.4.5.zip
+bin/plugin install http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.6/elasticsearch-analysis-morphology-2.4.6.zip
 </pre>
 
 h2. Installation before 2.0
