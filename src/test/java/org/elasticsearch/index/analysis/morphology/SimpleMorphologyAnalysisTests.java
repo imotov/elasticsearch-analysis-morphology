@@ -41,7 +41,7 @@ public class SimpleMorphologyAnalysisTests extends ESTestCase {
         Settings indexSettings = Settings.builder()
                 .put("index.analysis.analyzer.test.type", "custom")
                 .put("index.analysis.analyzer.test.tokenizer", "standard")
-                .putArray("index.analysis.analyzer.test.filter", "lowercase", "russian_morphology")
+                .putList("index.analysis.analyzer.test.filter", "lowercase", "russian_morphology")
                 .build();
 
         return createTestAnalysis(new Index("test", "_na_"), indexSettings, new AnalysisMorphologyPlugin());
