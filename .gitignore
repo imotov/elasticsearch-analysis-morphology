@@ -20,6 +20,7 @@ nbactions.xml
 .gradle/
 build/
 target/
+gradle.properties
 
 # testing stuff
 **/.local*

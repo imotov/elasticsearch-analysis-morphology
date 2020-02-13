@@ -9,7 +9,7 @@ h2. Compatibility
 The following table shows the compatible versions of Elasticsearch and Morphological Analysis Plugin.
 
 |_. Morphological Analysis Plugin |_.  Elasticsearch   |_. URL  |
-| 5.6.16                          | 5.6.16 | Build by yourself |
+| 5.6.16                          | 5.6.16 | https://dl.bintray.com/content/jfkz/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.16/elasticsearch-analysis-morphology-5.6.16.zip |
 | 5.6.15                          | 5.6.15 | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.15/elasticsearch-analysis-morphology-5.6.15.zip |
 | 5.6.14                          | 5.6.14 | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.14/elasticsearch-analysis-morphology-5.6.14.zip |
 | 5.6.13                          | 5.6.13 | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.13/elasticsearch-analysis-morphology-5.6.13.zip |
