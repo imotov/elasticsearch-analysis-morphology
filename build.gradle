@@ -23,7 +23,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "org.elasticsearch.gradle:build-tools:5.6.15"
+        classpath "org.elasticsearch.gradle:build-tools:5.6.16"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7"
     }
 }
@@ -41,13 +41,13 @@ apply plugin: 'maven-publish'
 //    }
 //}
 
-version = '5.6.15'
+version = '5.6.16'
 
 esplugin {
     description 'English and Russian Morphology for ElasticSearch.'
     classname 'org.elasticsearch.plugin.analysis.morphology.AnalysisMorphologyPlugin'
     name 'analysis-morphology'
-    version '5.6.15'
+    version '5.6.16'
 }
 
 dependencies {
@@ -89,4 +89,3 @@ if (project.hasProperty('bintrayUser')) {
 
 // TODO: temporary workaround until it's fixed in elasticsearch
 thirdPartyAudit.enabled = false
-
