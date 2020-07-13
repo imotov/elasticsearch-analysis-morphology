@@ -1,21 +1,29 @@
 /*
- * Copyright 2012 Igor Motov
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
+ * Licensed to Elasticsearch under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *    http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
+
+// this file is from elasticsearch-analysis-morphology, under apache 2.0 license
+// see https://github.com/babayotakun/elasticsearch-analysis-morphology
 
 package org.elasticsearch.index.analysis.morphology;
 
+import java.io.IOException;
+import java.io.StringReader;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.morphology.LuceneMorphology;
@@ -23,15 +31,11 @@ import org.apache.lucene.morphology.analyzer.MorphologyAnalyzer;
 import org.apache.lucene.morphology.analyzer.MorphologyFilter;
 import org.apache.lucene.morphology.english.EnglishLuceneMorphology;
 import org.apache.lucene.morphology.russian.RussianLuceneMorphology;
-import org.elasticsearch.common.io.FastStringReader;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.index.Index;
 import org.elasticsearch.index.analysis.NamedAnalyzer;
 import org.elasticsearch.plugin.analysis.morphology.AnalysisMorphologyPlugin;
 import org.elasticsearch.test.ESTestCase;
-
-import java.io.IOException;
-import java.io.StringReader;
 
 import static org.hamcrest.Matchers.instanceOf;
 
@@ -77,7 +81,7 @@ public class SimpleMorphologyAnalysisTests extends ESTestCase {
         LuceneMorphology englishLuceneMorphology = new EnglishLuceneMorphology();
 
         MorphologyAnalyzer russianAnalyzer = new MorphologyAnalyzer(russianLuceneMorphology);
-        TokenStream stream = russianAnalyzer.tokenStream("name", new FastStringReader("тест пм тест"));
+        TokenStream stream = russianAnalyzer.tokenStream("name", new StringReader("тест пм тест"));
         MorphologyFilter englishFilter = new MorphologyFilter(stream, englishLuceneMorphology);
         assertSimpleTSOutput(englishFilter, new String[] {"тест", "тесто", "пм", "тест", "тесто"});
     }

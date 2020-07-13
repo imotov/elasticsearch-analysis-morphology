@@ -23,7 +23,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "org.elasticsearch.gradle:build-tools:6.2.2"
+        classpath "org.elasticsearch.gradle:build-tools:7.8.0"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7"
     }
 }
@@ -33,16 +33,15 @@ apply plugin:'java'
 apply plugin: 'eclipse'
 apply plugin: 'elasticsearch.esplugin'
 apply plugin: 'com.jfrog.bintray'
-apply plugin: 'maven-publish'
 
 repositories {
     maven {
         name 'bintray-babayotakun-russianmorphology'
-        url "http://dl.bintray.com/babayotakun/russianmorphology"
+        url "https://dl.bintray.com/babayotakun/russianmorphology"
     }
 }
 
-version = '6.2.2'
+version = '7.8.0'
 
 esplugin {
     description 'English and Russian Morphology for ElasticSearch.'
@@ -50,44 +49,25 @@ esplugin {
     name 'analysis-morphology'
 }
 esplugin.version = version
+validateNebulaPom.enabled = false
+
 
 dependencies {
-    compile "org.apache.lucene.morphology:russian:1.4"
-    compile "org.apache.lucene.morphology:english:1.4"
-    compile "org.apache.lucene.morphology:morph:1.4"
+    compile "org.apache.lucene.morphology:russian:1-lucene8.5.1"
+    compile "org.apache.lucene.morphology:english:1-lucene8.5.1"
+    compile "org.apache.lucene.morphology:morph:1-lucene8.5.1"
 }
 
-publishing {
-    publications {
-        DefaultPublication(MavenPublication) {
-            groupId 'org.elasticsearch'
-            artifactId 'elasticsearch-analysis-morphology'
-            from components.java
-            artifact javadocJar
-            artifact sourcesJar
-            artifact bundlePlugin
-        }
+bintray {
+    user = ''
+    key = ''
+    pkg {
+        repo = 'elasticsearch-russian-morphology'
+        name = 'morphology'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/babayotakun/elasticsearch-analysis-morphology'
     }
 }
-
-
-// Only needed if we publish to bintray
-if (project.hasProperty('bintrayUser')) {
-
-    bintray {
-        user = project.property('bintrayUser')
-        key = project.property('bintrayApiKey')
-        pkg {
-            repo = 'elasticsearch-plugins'
-            name = 'elasticsearch-analysis-morphology'
-        }
-        publications = ['DefaultPublication']
-    }
-}
-
-// TODO: temporary workaround until it's fixed in elasticsearch
-thirdPartyAudit.enabled = false
-dependencyLicenses.enabled = false
 
 project.licenseFile = project.rootProject.file('LICENSE.txt')
 project.noticeFile = project.rootProject.file('NOTICE.txt')
