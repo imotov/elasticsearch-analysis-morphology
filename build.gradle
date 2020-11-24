@@ -41,7 +41,7 @@ repositories {
     }
 }
 
-version = '7.8.0'
+version = '7.10.0'
 
 esplugin {
     description 'English and Russian Morphology for ElasticSearch.'
@@ -53,9 +53,9 @@ validateNebulaPom.enabled = false
 
 
 dependencies {
-    compile "org.apache.lucene.morphology:russian:1-lucene8.5.1"
-    compile "org.apache.lucene.morphology:english:1-lucene8.5.1"
-    compile "org.apache.lucene.morphology:morph:1-lucene8.5.1"
+    compile "org.apache.lucene.morphology:russian:1-lucene8.7.0"
+    compile "org.apache.lucene.morphology:english:1-lucene8.7.0"
+    compile "org.apache.lucene.morphology:morph:1-lucene8.7.0"
 }
 
 bintray {

@@ -1,3 +1,10 @@
+h1. This is a fork
+
+This fork is supported time to time mainly for the upgrade to new Elasticsearch versions.
+For the corresponding Lucene plugin fork see https://github.com/babayotakun/russianmorphology
+for the actual Elasticsearch version.
+Latest: Elasticsearch 7.10 Russian morphology plugin.
+
 h1. Morphological Analysis Plugin for ElasticSearch
 
 The Morphological Analysis plugin integrates <a href="https://github.com/AKuznetsov/russianmorphology">Russian and English morphology for java and lucene framework</a> into elasticsearch. This plugin adds two new analyzers: "russian_morphology" and "english_morphology" and two token filters with the same names.
@@ -12,64 +19,11 @@ h2. Compatibility
 
 The following table shows the compatible versions of Elasticsearch and Morphological Analysis Plugin.
 
-|_. Morphological Analysis Plugin |_.  Elasticsearch   |_. URL  |
-|        ----                     | 6.0.0 and above  | *not supported* |
-| 5.6.8                           | 5.6.8  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.8/elasticsearch-analysis-morphology-5.6.8.zip |
-| 5.6.7                           | 5.6.7  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.7/elasticsearch-analysis-morphology-5.6.7.zip |
-| 5.6.6                           | 5.6.6  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.6/elasticsearch-analysis-morphology-5.6.6.zip |
-| 5.6.5                           | 5.6.5  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.5/elasticsearch-analysis-morphology-5.6.5.zip |
-| 5.6.4                           | 5.6.4  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.4/elasticsearch-analysis-morphology-5.6.4.zip |
-| 5.6.3                           | 5.6.3  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.3/elasticsearch-analysis-morphology-5.6.3.zip |
-| 5.6.2                           | 5.6.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.2/elasticsearch-analysis-morphology-5.6.2.zip |
-| 5.6.1                           | 5.6.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.1/elasticsearch-analysis-morphology-5.6.1.zip |
-| 5.6.0                           | 5.6.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.6.0/elasticsearch-analysis-morphology-5.6.0.zip |
-| 5.5.3                           | 5.5.3  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.5.3/elasticsearch-analysis-morphology-5.5.3.zip |
-| 5.5.2                           | 5.5.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.5.2/elasticsearch-analysis-morphology-5.5.2.zip |
-| 5.5.1                           | 5.5.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.5.1/elasticsearch-analysis-morphology-5.5.1.zip |
-| 5.5.0                           | 5.5.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.5.0/elasticsearch-analysis-morphology-5.5.0.zip |
-| 5.4.3                           | 5.4.3  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.4.3/elasticsearch-analysis-morphology-5.4.3.zip |
-| 5.4.2.1                         | 5.4.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.4.2.1/elasticsearch-analysis-morphology-5.4.2.1.zip |
-| 5.4.1                           | 5.4.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.4.1/elasticsearch-analysis-morphology-5.4.1.zip |
-| 5.4.0                           | 5.4.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.4.0/elasticsearch-analysis-morphology-5.4.0.zip |
-| 5.3.3                           | 5.3.3  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.3.3/elasticsearch-analysis-morphology-5.3.3.zip |
-| 5.3.2                           | 5.3.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.3.2/elasticsearch-analysis-morphology-5.3.2.zip |
-| 5.3.1                           | 5.3.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.3.1/elasticsearch-analysis-morphology-5.3.1.zip |
-| 5.3.0                           | 5.3.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.3.0/elasticsearch-analysis-morphology-5.3.0.zip |
-| 5.2.2                           | 5.2.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.2.2/elasticsearch-analysis-morphology-5.2.2.zip |
-| 5.2.1                           | 5.2.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.2.1/elasticsearch-analysis-morphology-5.2.1.zip |
-| 5.2.0                           | 5.2.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.2.0/elasticsearch-analysis-morphology-5.2.0.zip |
-| 5.1.2                           | 5.1.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.1.2/elasticsearch-analysis-morphology-5.1.2.zip |
-| 5.1.1                           | 5.1.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.1.1/elasticsearch-analysis-morphology-5.1.1.zip |
-| 5.0.2                           | 5.0.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.0.2/elasticsearch-analysis-morphology-5.0.2.zip |
-| 5.0.1                           | 5.0.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.0.1/elasticsearch-analysis-morphology-5.0.1.zip |
-| 5.0.0                           | 5.0.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/5.0.0/elasticsearch-analysis-morphology-5.0.0.zip |
-| 2.4.6                           | 2.4.6  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.6/elasticsearch-analysis-morphology-2.4.6.zip |
-| 2.4.5                           | 2.4.5  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.5/elasticsearch-analysis-morphology-2.4.5.zip |
-| 2.4.4                           | 2.4.4  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.4/elasticsearch-analysis-morphology-2.4.4.zip |
-| 2.4.3                           | 2.4.3  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.3/elasticsearch-analysis-morphology-2.4.3.zip |
-| 2.4.2                           | 2.4.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.2/elasticsearch-analysis-morphology-2.4.2.zip |
-| 2.4.1                           | 2.4.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.1/elasticsearch-analysis-morphology-2.4.1.zip |
-| 2.4.0                           | 2.4.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.4.0/elasticsearch-analysis-morphology-2.4.0.zip |
-| 2.3.5                           | 2.3.5  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.3.5/elasticsearch-analysis-morphology-2.3.5.zip |
-| 2.3.4                           | 2.3.4  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.3.4/elasticsearch-analysis-morphology-2.3.4.zip |
-| 2.3.3                           | 2.3.3  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.3.3/elasticsearch-analysis-morphology-2.3.3.zip |
-| 2.3.2                           | 2.3.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.3.2/elasticsearch-analysis-morphology-2.3.2.zip |
-| 2.3.1                           | 2.3.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.3.1/elasticsearch-analysis-morphology-2.3.1.zip |
-| 2.3.0                           | 2.3.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.3.0/elasticsearch-analysis-morphology-2.3.0.zip |
-| 2.2.2                           | 2.2.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.2.2/elasticsearch-analysis-morphology-2.2.2.zip |
-| 2.2.1                           | 2.2.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.2.1/elasticsearch-analysis-morphology-2.2.1.zip |
-| 2.2.0                           | 2.2.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.2.0/elasticsearch-analysis-morphology-2.2.0.zip |
-| 2.1.2                           | 2.1.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.1.2/elasticsearch-analysis-morphology-2.1.2.zip |
-| 2.1.1                           | 2.1.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.1.1/elasticsearch-analysis-morphology-2.1.1.zip |
-| 2.1.0                           | 2.1.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.1.0/elasticsearch-analysis-morphology-2.1.0.zip |
-| 2.0.2                           | 2.0.2  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.0.2/elasticsearch-analysis-morphology-2.0.2.zip |
-| 2.0.1                           | 2.0.1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.0.1/elasticsearch-analysis-morphology-2.0.1.zip |
-| 2.0.0                           | 2.0.0  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.0.0/elasticsearch-analysis-morphology-2.0.0.zip |
-| 2.0.0-beta1                     | 2.0.0-beta1  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/2.0.0-beta1/elasticsearch-analysis-morphology-2.0.0-beta1.zip |
-| 1.2.1                           | 1.6.x&nbsp;->&nbsp;1.x.x  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/1.2.1/elasticsearch-analysis-morphology-1.2.1.zip |
-| 1.2.0                           | 1.0.0&nbsp;->&nbsp;1.5.x  | http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/1.2.0/elasticsearch-analysis-morphology-1.2.0.zip |
-| 1.1.0                           | 0.90.0.Beta1&nbsp;->&nbsp;0.90.X   | http://dl.bintray.com/content/imotov/elasticsearch-plugins/elasticsearch-analysis-morphology-1.1.0.zip |
-| 1.0.0                           | 0.19.0&nbsp;->&nbsp;0.20.99   | http://dl.bintray.com/content/imotov/elasticsearch-plugins/elasticsearch-analysis-morphology-1.0.0.zip |
+|_.  Elasticsearch   |_. URL  |
+| 7.10.0  | http://bintray.com/api/ui/download/babayotakun/elasticsearch-russian-morphology/analysis-morphology-7.10.0.zip |
+| 7.8.0  | http://bintray.com/api/ui/download/babayotakun/elasticsearch-russian-morphology/analysis-morphology-7.8.0.zip |
+| 6.2.2  | https://bintray.com/api/ui/download/babayotakun/elasticsearch-russian-morphology/org/elasticsearch/elasticsearch-analysis-morphology/6.2.2/elasticsearch-analysis-morphology-6.2.2.zip |
+| below  | see origin repository |
 
 h2. Installation on 5.x
 
