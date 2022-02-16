@@ -3,17 +3,13 @@ h1. This is a fork
 This fork is supported time to time mainly for the upgrade to new Elasticsearch versions.
 For the corresponding Lucene plugin fork see https://github.com/babayotakun/russianmorphology
 for the actual Elasticsearch version.
-Latest: Elasticsearch 7.10 Russian morphology plugin.
+Latest: Elasticsearch 8.0.0 Russian morphology plugin.
 
 h1. Morphological Analysis Plugin for ElasticSearch
 
 The Morphological Analysis plugin integrates <a href="https://github.com/AKuznetsov/russianmorphology">Russian and English morphology for java and lucene framework</a> into elasticsearch. This plugin adds two new analyzers: "russian_morphology" and "english_morphology" and two token filters with the same names.
 
 The <a href="https://github.com/imotov/elasticsearch-analysis-morphology/blob/master/demo.sh">demo.sh</a> file shows a few examples of the analyzers behavior.
-
-h2. Switching to Hunspell
-
-*NOTE:* Please note that this plugin is available only for Elasticsearch v5.6.x and below. For Elasticsearch version 6.0 and above consider switching to the officially supported <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-hunspell-tokenfilter.html">hunspell</a> token filter with russian dictionaries.
 
 h2. Compatibility
 

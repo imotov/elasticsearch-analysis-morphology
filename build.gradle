@@ -16,32 +16,18 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven {
-            name 'sonatype-snapshots'
-            url "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
-        jcenter()
     }
     dependencies {
-        classpath "org.elasticsearch.gradle:build-tools:7.10.0"
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7"
+        classpath "org.elasticsearch.gradle:build-tools:8.0.0"
     }
 }
 
 apply plugin: 'idea'
-apply plugin:'java'
+apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'elasticsearch.esplugin'
-apply plugin: 'com.jfrog.bintray'
 
-repositories {
-    maven {
-        name 'bintray-babayotakun-russianmorphology'
-        url "https://dl.bintray.com/babayotakun/russianmorphology"
-    }
-}
-
-version = '7.10.0'
+version = '8.0.0'
 
 esplugin {
     description 'English and Russian Morphology for ElasticSearch.'
@@ -49,26 +35,15 @@ esplugin {
     name 'analysis-morphology'
 }
 esplugin.version = version
-validateNebulaPom.enabled = false
+
+repositories {
+    mavenCentral()
+}
 
 
 dependencies {
-    compile "org.apache.lucene.morphology:russian:1-lucene8.7.0"
-    compile "org.apache.lucene.morphology:english:1-lucene8.7.0"
-    compile "org.apache.lucene.morphology:morph:1-lucene8.7.0"
+    implementation files("$rootDir/libs/english-1-lucene9.0.0.jar")
+    implementation files("$rootDir/libs/morph-1-lucene9.0.0.jar")
+    implementation files("$rootDir/libs/russian-1-lucene9.0.0.jar")
 }
-
-bintray {
-    user = ''
-    key = ''
-    pkg {
-        repo = 'elasticsearch-russian-morphology'
-        name = 'morphology'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/babayotakun/elasticsearch-analysis-morphology'
-    }
-}
-
-project.licenseFile = project.rootProject.file('LICENSE.txt')
-project.noticeFile = project.rootProject.file('NOTICE.txt')
 
