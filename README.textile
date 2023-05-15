@@ -16,6 +16,7 @@ h2. Compatibility
 The following table shows the compatible versions of Elasticsearch and Morphological Analysis Plugin.
 
 |_.  Elasticsearch   |_. URL  |
+| 8.7.1  | https://github.com/babayotakun/elasticsearch-analysis-morphology/raw/master/dist/analysis-morphology-8.7.1.zip  |
 | 8.0.0  | https://github.com/babayotakun/elasticsearch-analysis-morphology/raw/master/dist/analysis-morphology-8.0.0.zip  |
 | 7.17.0  | https://github.com/babayotakun/elasticsearch-analysis-morphology/raw/elastic-7.17/dist/analysis-morphology-7.17.0.zip  |
 | 7.10.0  | RIP bintray. Have to build it yourself. |

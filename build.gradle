@@ -18,7 +18,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "org.elasticsearch.gradle:build-tools:7.17.0"
+        classpath "org.elasticsearch.gradle:build-tools:8.7.1"
     }
 }
 
@@ -27,7 +27,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'elasticsearch.esplugin'
 
-version = '7.17.0'
+version = '8.7.1'
 
 esplugin {
     description 'English and Russian Morphology for ElasticSearch.'
@@ -42,8 +42,8 @@ repositories {
 
 
 dependencies {
-    implementation files("$rootDir/libs/english-1-lucene8.11.1.jar")
-    implementation files("$rootDir/libs/morph-1-lucene8.11.1.jar")
-    implementation files("$rootDir/libs/russian-1-lucene8.11.1.jar")
+    implementation files("$rootDir/libs/english-1-lucene9.5.0.jar")
+    implementation files("$rootDir/libs/morph-1-lucene9.5.0.jar")
+    implementation files("$rootDir/libs/russian-1-lucene9.5.0.jar")
 }
 

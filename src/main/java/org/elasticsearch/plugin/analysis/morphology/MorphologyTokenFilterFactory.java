@@ -39,7 +39,7 @@ public class MorphologyTokenFilterFactory extends AbstractTokenFilterFactory {
 
     public MorphologyTokenFilterFactory(IndexSettings indexSettings, Environment environment, String name,
                                         Settings settings, LuceneMorphology englishLuceneMorphology) {
-        super(indexSettings, name, settings);
+        super(name, settings);
         luceneMorph = englishLuceneMorphology;
     }
 
